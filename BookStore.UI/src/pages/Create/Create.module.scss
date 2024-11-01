@@ -1,0 +1,76 @@
+.form {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+
+    .title{
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        input{
+            width: 300px;
+        }
+    }
+
+    .price{
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        input{
+            width: 300px;
+        }
+    }
+
+    .authors{
+        width: 300px;
+
+        .authorItem{
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            input{
+                width: 100%;
+                padding: 8px;
+            }
+        }
+        span {
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        a {
+            background-color: white;
+            font-size: 20px;
+            font-weight: 800;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            border: 3px solid black;
+            border-radius: 20px;
+            padding-bottom: 3px;
+            cursor: pointer;
+        }
+    }
+
+    .saveBtn {
+        width: min-content;
+        cursor: pointer;
+    }
+}

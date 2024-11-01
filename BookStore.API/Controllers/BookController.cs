@@ -33,6 +33,13 @@ namespace BookStore.API.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        public async Task<IActionResult> ChangeBookPrice([FromForm] BookPriceModel book)
+        {
+            await _bookService.ChangeBookPrice(book);
+            return Ok();
+        }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteBookById([FromQuery] int id)
         {

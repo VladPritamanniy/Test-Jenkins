@@ -8,6 +8,7 @@ using BookStore.Infrastructure.Data;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace BookStore.API
 {
@@ -16,7 +17,7 @@ namespace BookStore.API
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
             {
                 builder.WebHost.UseUrls("https://0.0.0.0:8081");
@@ -27,11 +28,18 @@ namespace BookStore.API
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnection"), b => b.MigrationsAssembly("BookStore.Infrastructure")));
 
             builder.Services.AddFluentValidationAutoValidation()
-                .AddValidatorsFromAssemblyContaining<BookCreateValidator>();
+                .AddValidatorsFromAssemblyContaining<BookCreateModelValidator>();
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("all", builder => builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+            });
 
             services.AddExceptionHandler<GlobalExceptionHandler>();
             services.AddProblemDetails();
@@ -48,7 +56,10 @@ namespace BookStore.API
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
+            app.UseExceptionHandler();
+
             app.UseAuthorization();
+            app.UseCors("all");
             app.MapControllers();
 
             await task;

@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace BookStore.Application.Validators
 {
-    public class BookCreateValidator : AbstractValidator<BookCreateModel>
+    public class BookCreateModelValidator : AbstractValidator<BookCreateModel>
     {
-        public BookCreateValidator()
+        public BookCreateModelValidator()
         {
             RuleFor(p => p.Price)
                 .NotEmpty().WithMessage("Price is not valid");

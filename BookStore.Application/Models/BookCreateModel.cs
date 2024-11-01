@@ -4,6 +4,6 @@
     {
         public string Title { get; set; }
         public decimal Price { get; set; }
-        public IEnumerable<string> AuthorsName { get; set; }
+        public string[] AuthorsName { get; set; }
     }
 }

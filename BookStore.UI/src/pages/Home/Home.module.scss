@@ -1,0 +1,114 @@
+.createNewBookBtn{
+    background-color: rgb(82, 82, 226);
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: rgb(52, 52, 153);
+    }
+}
+.booksContainer{
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    .bookItem {
+        height: 220px;
+        width: 220px;
+        background-color: white;
+        border: 2px solid plum;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 7px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .bookInfo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .bookPrice{
+                color: red;
+            }
+
+            .bookTitle{
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                line-height: 21px;
+                text-align: center;
+                color: rgb(0, 0, 0);
+                margin: 0;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+                height: 45px;
+                margin: 0px 10px;
+            }
+
+            .authorsNameContainer{
+                display: flex;
+                margin: 0;
+                padding: 10px 0 0 0;
+                height: 40px;
+                flex-wrap: wrap;
+                overflow: hidden;
+                display: flex;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+
+                .authorNameContainer{
+                    list-style: none;
+                    
+                    .authorName{
+                        width: max-content;
+                        height: max-content;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        .bookDeleteBtn {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            .deleteBtn{
+                background-color: red;
+                color: white;
+                border: none;
+
+                &:hover{
+                    background-color: rgb(131, 12, 12);
+                }
+            }
+
+            .changeBtn{
+                background-color: hotpink;
+                color: white;
+                border: none;
+
+                &:hover{
+                    background-color: rgb(170, 41, 116);
+                }
+            }
+        }
+    }
+}

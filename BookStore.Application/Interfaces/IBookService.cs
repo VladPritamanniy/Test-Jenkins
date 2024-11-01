@@ -4,9 +4,10 @@ namespace BookStore.Application.Interfaces
 {
     public interface IBookService
     {
-        public Task<IEnumerable<BookModel>> GetAllBooks();
-        public Task<BookModel> GetBookById(int id);
-        public Task CreateBook(BookCreateModel book);
-        public Task DeleteBookById(int id);
+        Task<IEnumerable<BookModel>> GetAllBooks();
+        Task<BookModel> GetBookById(int id);
+        Task CreateBook(BookCreateModel book);
+        Task ChangeBookPrice(BookPriceModel book);
+        Task DeleteBookById(int id);
     }
 }

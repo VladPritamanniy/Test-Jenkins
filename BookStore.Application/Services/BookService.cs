@@ -83,6 +83,18 @@ namespace BookStore.Application.Services
             await _bookRepository.SaveChangesAsync();
         }
 
+        public async Task ChangeBookPrice(BookPriceModel book)
+        {
+            var bookEntity = await _bookRepository.FirstOrDefaultAsync(new BookByIdSpecification(book.Id));
+            if (bookEntity == null)
+            {
+                throw new BookNotFoundException(book.Id);
+            }
+
+            bookEntity.Price = book.Price;
+            await _bookRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteBookById(int id)
         {
             var book = await _bookRepository.FirstOrDefaultAsync(new BookByIdSpecification(id));
@@ -91,7 +103,7 @@ namespace BookStore.Application.Services
                 throw new BookNotFoundException(id);
             }
 
-            book!.SoftDeleted = true;
+            book.SoftDeleted = true;
             await _bookRepository.SaveChangesAsync();
         }
     }
